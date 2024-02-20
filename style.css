@@ -1,0 +1,91 @@
+
+    
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(https://media.istockphoto.com/photos/world-currency-exchange-table-graph-picture-id818517624?k=6&m=818517624&s=170667a&w=0&h=VgM_XZ60j9D5VkthOw4YaHCXso1aYQycVlWjT9aCCoM=);
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            min-height: 45vh;
+            min-width: 25vw;
+        }
+
+        form {
+            margin: 3rem 0 1rem 0;
+        }
+
+        form select,
+        input,
+        button {
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: .79rem;
+        }
+
+        form input {
+            border: 1px solid grey;
+            font-size: 1rem;
+            padding: .5rem;
+            height: 1rem;
+        }
+
+        .dropdown {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .select-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 6rem;
+            border-radius: .5rem;
+            border: 1px solid grey;
+        }
+
+        .select-container img {
+            max-width: 2rem;
+        }
+
+        .select-container select {
+            font-size: 1rem;
+            width: auto;
+        }
+
+
+        .msg {
+            margin: 2rem 0 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            height: 3rem;
+            background: #af4d98;
+            color: white;
+            font-size: 1.12rem;
+            cursor: pointer;
+            transition: 50ms
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+
