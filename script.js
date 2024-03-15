@@ -1,69 +1,62 @@
-let Base_Url = " https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
 
         let dropdown = document.querySelectorAll(".dropdown select");
-        let btn = document.querySelector('form button');
+        let btn = document.querySelector("form button");
+
 
         for (let select of dropdown) {
-            for (Currcode in countryList) {
+            for (code in countryList) {
                 let newopt = document.createElement("option");
-                newopt.innerText = Currcode;
-                newopt.value = Currcode;
-                if (select.name === "from" && Currcode === "USD") {
-                    newopt.selected = "selected";
-                }
-                else if (select.name === "to" && Currcode === "INR") {
-                    newopt.selected = "selected";
-                }
+                newopt.innerText = code;
+                newopt.value = code;
                 select.append(newopt);
 
-            }
-            select.addEventListener("change", (evt) => {
-                updateFlag(evt.target);
-            })
-        }
+                if (select.name === "from" && code === "USD") {
+                    newopt.selected = "selected";
+                }
 
+                else if (select.name === "to" && code === "INR") {
+                    newopt.selected = "selected";
+                }
+
+            }
+
+            select.addEventListener("change", (evt) => {
+                updateFlag(evt.target);     // evt.target tell us that where the change is occuring
+            })
+
+        }
 
         const updateFlag = (element) => {
-            let Currcode = element.value;
-            let CountryCode = countryList[Currcode];
-
-            let newSrc = `https://flagsapi.com/${CountryCode}/flat/64.png`;
-            let img = element.parentElement.querySelector('img');
-            img.src = newSrc;
+            let curr = element.value;
+            let currcode = countryList[curr];
+            // console.log(curr, currcode)
+            let img = element.parentElement.querySelector(' img');
+            let newsource = `https://flagsapi.com/${currcode}/flat/64.png`;
+            img.src = newsource;
         }
 
-        const CuConvert = async () => {
-            let amount = document.querySelector(".amount input");
-            let Amtval = amount.value;
-            if (Amtval === "" || Amtval < 1) {
-                Amtval = 1;
+        btn.addEventListener("click", async (evt) => {
+            evt.preventDefault();
+            let amount = document.querySelector('.amount input');
+            if (amount.value === '' || amount.value === 0) {
                 amount.value = 1;
             }
 
             let from = document.querySelector(".from select");
-            let to = document.querySelector(".To select");
+            let to = document.querySelector(".to select");
 
-            const url = `${Base_Url}/${from.value.toLowerCase()}/${to.value.toLowerCase()}.json`;
+            let URL = `${Base_Url}/${from.value}`;
+            let toURL = `${Base_Url}/${to.value}`;
+            console.log(URL, toURL);
+            let rate = await fetch(URL);
+            // console.log(rate)
+            let data = await rate.json();
+            let showExRateOfToVal = data.rates[to.value];
+            let finalExRate = amount.value * showExRateOfToVal;
 
-            const respons = await fetch(url);
-            // console.log(respons);
-            let data = await respons.json();
-            // console.log(data);
-            let rate = data[to.value.toLowerCase()];
-            // console.log(rate);
-
-            let finalval = Amtval * rate;
-            console.log(finalval);
             let msg = document.querySelector(".msg");
-            msg.innerHTML = `<b>${amount.value} ${from.value} =  ${finalval} ${to.value}</b>`;
+            msg.innerHTML = `<b>${amount.value} ${from.value} = ${finalExRate} ${to.value}</b>`;
 
 
-        }
-
-
-        btn.addEventListener("click", (evt) => {
-            evt.preventDefault();
-            CuConvert();
         })
-
-
