@@ -1,4 +1,4 @@
-let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
+        let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
 
         let dropdown = document.querySelectorAll(".dropdown select");
         let btn = document.querySelector("form button");
@@ -18,13 +18,11 @@ let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
                 else if (select.name === "to" && code === "INR") {
                     newopt.selected = "selected";
                 }
-
             }
 
             select.addEventListener("change", (evt) => {
                 updateFlag(evt.target);     // evt.target tell us that where the change is occuring
             })
-
         }
 
         const updateFlag = (element) => {
@@ -48,7 +46,7 @@ let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
 
             let URL = `${Base_Url}/${from.value}`;
             let toURL = `${Base_Url}/${to.value}`;
-            console.log(URL, toURL);
+            // console.log(URL, toURL);
             let rate = await fetch(URL);
             // console.log(rate)
             let data = await rate.json();
@@ -60,3 +58,4 @@ let Base_Url = "https://api.exchangerate-api.com/v4/latest/";
 
 
         })
+    
