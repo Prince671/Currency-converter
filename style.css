@@ -1,6 +1,4 @@
-
-    
-        * {
+ * {
             margin: 0;
             padding: 0;
         }
@@ -11,10 +9,9 @@
             align-items: center;
             min-height: 100vh;
             background-image: url(https://media.istockphoto.com/photos/world-currency-exchange-table-graph-picture-id818517624?k=6&m=818517624&s=170667a&w=0&h=VgM_XZ60j9D5VkthOw4YaHCXso1aYQycVlWjT9aCCoM=);
-            background-size: 100%;
+            background-size: cover;
             background-repeat: no-repeat;
         }
-
 
         .container {
             background: white;
@@ -26,6 +23,10 @@
 
         form {
             margin: 3rem 0 1rem 0;
+        }
+
+        #text {
+            width: 95%;
         }
 
         form select,
@@ -69,7 +70,6 @@
             width: auto;
         }
 
-
         .msg {
             margin: 2rem 0 2rem 0;
             display: flex;
@@ -88,4 +88,3 @@
         button:active {
             transform: scale(0.9);
         }
-
